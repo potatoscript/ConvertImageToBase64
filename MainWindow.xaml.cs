@@ -14,7 +14,11 @@ namespace ConvertImageToBase64
         {
             InitializeComponent();
 
-            string filePath = @"C:\Projects\Image.png"; // Specify the path to your PNG file
+            // Get the current directory of the system
+            string currentDirectory = Directory.GetCurrentDirectory();
+
+            // Combine the current directory with the relative path of the image
+            string filePath = Path.Combine(currentDirectory, "Image.png");
             string base64String = ImageHelper.ConvertPngToBase64(filePath);
 
             if (base64String != null)
