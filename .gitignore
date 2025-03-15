@@ -1,0 +1,42 @@
+# Build and binary files
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# NuGet packages
+packages/
+*.nupkg
+project.lock.json
+project.assets.json
+
+# Resharper and Rider files
+.idea/
+*.DotSettings.user
+
+# Logs, database, and temp files
+*.log
+logs/
+*.db
+*.bak
+*.tmp
+
+# Publish outputs
+publish/
+out/
+
+# JetBrains Rider
+.idea/
+
+# Rider's workspace
+.idea/workspace.xml
