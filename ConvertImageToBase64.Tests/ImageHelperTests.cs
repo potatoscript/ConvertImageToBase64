@@ -15,7 +15,7 @@ namespace ConvertImageToBase64.Tests
             string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Images", "image.png"); // Use relative path for testing
 
             // Act
-            string result = ImageHelper.ConvertPngToBase64(filePath);
+            string? result = ImageHelper.ConvertPngToBase64(filePath);
 
             // Assert
             Assert.NotNull(result); // Ensure the result is not null
@@ -27,7 +27,7 @@ namespace ConvertImageToBase64.Tests
         public void ConvertPngToBase64_EmptyFilePath_ReturnsNull()
         {
             // Act
-            string result = ImageHelper.ConvertPngToBase64(string.Empty);
+            string? result = ImageHelper.ConvertPngToBase64(string.Empty);
 
             // Assert
             Assert.Null(result);
@@ -41,7 +41,7 @@ namespace ConvertImageToBase64.Tests
             string filePath = @"C:\NonExistentPath\image.png"; // Specify a non-existing file path
 
             // Act
-            string result = ImageHelper.ConvertPngToBase64(filePath);
+            string? result = ImageHelper.ConvertPngToBase64(filePath);
 
             // Assert
             Assert.Null(result);
@@ -62,7 +62,7 @@ namespace ConvertImageToBase64.Tests
             byte[] expectedBytes = File.ReadAllBytes(relativeFilePath);
 
             // Act
-            byte[] result = ImageHelper.ReadFile(relativeFilePath);
+            byte[]? result = ImageHelper.ReadFile(relativeFilePath);
 
             // Assert
             Assert.NotNull(result);
@@ -77,7 +77,7 @@ namespace ConvertImageToBase64.Tests
             string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Images", "image2.png");
 
             // Act
-            byte[] result = ImageHelper.ReadFile(filePath);
+            byte[]? result = ImageHelper.ReadFile(filePath);
 
             // Assert
             Assert.Null(result);
