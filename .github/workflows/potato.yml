@@ -1,0 +1,79 @@
+name: Potato Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        dotnet-version: [8.0]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build the project
+        run: dotnet build --configuration Release
+
+      - name: Run tests
+        run: dotnet test --configuration Release --no-build --verbosity normal
+
+         
+      # Set up Git credentials
+      - name: Set up Git credentials
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      # Fetch and checkout production branch
+      - name: Fetch and checkout production branch
+        run: |
+          git fetch origin
+          git checkout production
+
+      # Merge main into production
+      - name: Merge main into production
+        run: |
+          git pull origin production
+
+      - name: Push changes to production branch
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/potatoscript/ConvertImageToBase64.git
+          git push origin production    
+
+      # ✁EAdd Jenkins Trigger
+      #- name: Trigger Jenkins Job
+      #  run: |
+      #    $username = 'potato'
+      #    $api_token = '11014539924e837f5a8baf9d9824778aff'
+          
+          # Combine username and API token, and then base64 encode them
+      #    $credentials = "${username}:${api_token}"
+      #    $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes($credentials))
+          
+          # Set headers with base64-encoded credentials
+      #    $headers = @{
+      #        "Authorization" = "Basic $base64AuthInfo"
+      #    }
+
+          # Trigger the Jenkins job
+      #    Invoke-WebRequest -Uri "https://87dd-210-139-66-104.ngrok-free.app/job/potato/build?token=potato-deploy-token" -Method Post -Headers $headers
+      #  shell: pwsh
