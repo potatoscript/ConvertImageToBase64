@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>  <!-- Or your desired version -->
+	<Nullable>enable</Nullable> <!-- Enable Nullable Reference Types project-wide -->
+    <PackageId>ConvertImageToBase64.Lib</PackageId>
+    <Version>1.0.0</Version>    <!-- You can increment the version as you update -->
+    <Authors>potatoscript</Authors>
+    <Description>A library for converting images to base64 strings.</Description>
+    <PackageTags>image, base64, conversion</PackageTags>
+  </PropertyGroup>
+
+</Project>

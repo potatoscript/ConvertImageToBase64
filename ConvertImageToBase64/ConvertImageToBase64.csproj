@@ -8,4 +8,9 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ConvertImageToBase64.App\ConvertImageToBase64.App.csproj" />
+    <ProjectReference Include="..\ConvertImageToBase64.Lib\ConvertImageToBase64.Lib.csproj" />
+  </ItemGroup>
+
 </Project>
