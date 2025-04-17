@@ -1,7 +1,4 @@
-using System;
-using System.IO;
-using ConvertImageToBase64;
-using Xunit;
+using ConvertImageToBase64.Lib;
 
 namespace ConvertImageToBase64.Tests
 {
